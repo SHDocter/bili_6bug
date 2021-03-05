@@ -1,0 +1,445 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="icon" type="image/x-icon" href="1.png" /><link rel="shortcut icon" href="1.png" type="image/x-icon">
+<title>六雨革月</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
+<link rel="stylesheet" type="text/css" href="css/mdui.css">
+</head>
+<div id="page_begin_html"><!-- 变换线背景动画 -->
+<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+<canvas id="c_n9" width="1920" height="1080" style="position: fixed; top: 0px; left: 0px; z-index: -1; opacity: 1;"></canvas>
+<script src="js/canvas-nest.min.js" defer=""></script>
+	</div><!-- 变换线背景动画 -->
+<script>
+	!function(e, t, a) {
+    function r() {
+        for (var e = 0; e < s.length; e++) s[e].alpha <= 0 ? (t.body.removeChild(s[e].el), s.splice(e, 1)) : (s[e].y--, s[e].scale += .004, s[e].alpha -= .013, s[e].el.style.cssText = "left:" + s[e].x + "px;top:" + s[e].y + "px;opacity:" + s[e].alpha + ";transform:scale(" + s[e].scale + "," + s[e].scale + ") rotate(45deg);background:" + s[e].color + ";z-index:99999");
+requestAnimationFrame(r)
+    }
+    function n() {
+        var t = "function" == typeof e.onclick && e.onclick;
+        e.onclick = function(e) {
+            t && t(),
+            o(e)
+        }
+    }
+    function o(e) {
+        var a = t.createElement("div");
+		//a.innerText = "❤";
+        a.className = "heart",
+        s.push({
+            el: a,
+            x: e.clientX - 5,
+            y: e.clientY - 5,
+            scale: 1,
+			alpha: 1,
+            color:  c()
+        }),
+
+        t.body.appendChild(a)
+    }
+    function i(e) {
+        var a = t.createElement("style");
+        a.type = "text/css";
+        try {
+            a.appendChild(t.createTextNode(e))
+        } catch(t) {
+            a.styleSheet.cssText = e
+        }
+        t.getElementsByTagName("head")[0].appendChild(a)
+    }
+    function c() {
+        return "rgb(" + ~~ (255 * Math.random()) + "," + ~~ (255 * Math.random()) + "," + ~~ (255 * Math.random()) + ")"
+    }
+        var s = [];
+        e.requestAnimationFrame = e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame ||
+    function(e) {
+        setTimeout(e, 1e3 / 60)
+    },
+        i(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"),
+        n(),
+        r()
+} (window, document);
+</script><!--heart-->
+<!-- <script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script> -->
+	    <script>
+	    function isMobile(){
+           let info = navigator.userAgent;
+           let agents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPod", "iPad"];
+           for(let i = 0; i < agents.length; i++){
+           if(info.indexOf(agents[i]) >= 0) return true;
+    }
+           return false;
+    } //判断是否是移动端
+		   if(!isMobile()){                 //如果是移动端，取消看板娘
+               L2Dwidget.init({
+	            "model": {
+	                // 可以更换不同的人物模型jsonPath
+	                jsonPath: "https://cdn.jsdelivr.net/gh/QiShaoXuan/live2DModel@1.0.0/live2d-widget-model-wanko/assets/wanko.model.json",
+	                "scale": 1
+	            },
+	            "display": {
+	                "position": "left", 	// 看板娘的表现位置
+	                "width": 150,         	// 小萝莉的宽度
+	                "height": 200,       	// 小萝莉的高度
+	                "hOffset": 0,
+	                "vOffset": -40
+	            },
+	            "mobile": {
+	                "show": true,
+	                "scale": 0.5
+	            },
+				"name": {
+					"div": 'e'
+				},
+	            "react": {
+	                "opacityDefault": 1,
+	                "opacityOnHover": 0.2
+	            }
+	        });
+	        }
+	    </script><!--看板娘-->
+<style>
+html, body {
+  height: 100%;
+}
+
+body {
+  background: #A4A4A4;
+}
+</style>	
+
+<style>
+	*{margin:0;padding:0;}
+	.pic{width:190px;height:190px;border:solid 1px #ccc;margin:50px auto;overflow: hidden;position: relative;color:#fff;}	
+	.pic img{width:100%;}
+	.mask{position: absolute;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.4);display: none;}
+	.pic h1{position: absolute;left:45.5%;top:42px;text-align: center;width: 130px;margin-left:-55px;font-weight: normal;transform: translateX(-200px);font-size:22px}
+	.pic span{position: absolute;left:50%;top:85px;width:90px;height:3px;background:#fff;margin-left:-45px;transform: translateX(200px)}
+	.pic p{position: absolute;left:50%;top:95px;font-size:22px;width:100px;text-align: center;margin-left:-50px;transform: translateX(-200px);color: #66B3FF}
+	.pic:hover p,
+	.pic:hover span,
+	.pic:hover h1{transform: translateX(0)}
+	.pic h1,
+	.pic p,
+	.pic span{transition: .7s;}
+	.pic:hover .mask{display: block}
+</style>
+<body>
+<div class="i">
+<div class="pic">
+	<img src="1.png" alt="6bug">
+	<div class="mask"></div>
+    <h1>哔哩哔哩</h1>
+	<span></span>
+	<a href="" onclick="window.open('error.html')"><p>六雨革月</p></a>
+</div>
+</div>
+</body>
+
+<style>
+	.e{
+	font-size:35px;
+	font-family: "AAR";
+	}
+	.f{
+	font-size:30px;
+	font-family: "nangouriman";	
+	}
+	.g{
+	font-size:26px;
+	font-family: "SentyTEA-Platinum";
+	}
+	.h{
+	font-size:30px;
+	font-family: "benmo";
+	}
+	.i{font-size:20px;
+	font-family: "benmo";}
+	.i p1{
+                font-style: normal;
+                font-weight: normal;
+                font-size: 25px;
+                font-family: "benmo";
+                color:black;
+            }
+	.j a1{
+	color:#ffffff; text-decoration:none;
+	font-family: "benmo";
+	}
+	@font-face{
+	    font-family: "nangouriman";
+        src: url("fonts/nangouriman.ttf");
+	}
+	@font-face{
+		font-family: "SentyTEA-Platinum";
+		src: url("fonts/SentyTEA-Platinum.ttf");
+	}
+	@font-face{
+		font-family: "benmo";
+		src: url("fonts/benmo.TTF");
+	}
+	@font-face{
+		font-family: "Muyao-Softbrush";
+		src: url("fonts/Muyao-Softbrush-2.ttf");
+	}
+	@font-face{
+		font-family: "AAR";
+		src: url("fonts/AAR.ttf");
+	}
+	@font-face{
+		font-family: "DDR";
+		src: url("fonts/DottedSongtiDiamondRegular.otf");
+	}
+</style>
+<center><div class="e"><span style="color: #ffffff;">6bug,yyds!</span></div></center>
+<br><br>
+<style>
+	.a p1{text-align: center; padding: 0px; margin: 0px;}
+	.a s1{color: #ffffff;}
+	.a p2{text-align: center; padding: 0px; margin: 0px;color: black;}
+	.a s2{color: #ffffff;}
+	.a p1{
+                font-style: normal;
+                font-weight: normal;
+                font-size: 25px;
+                font-family: "SentyTEA-Platinum";
+                color:#ffffff;
+            }
+	.a p2{
+                font-style: normal;
+                font-weight: normal;
+                font-size: 25px;
+                font-family: "benmo";
+                color:black;
+            }
+	.a p3{
+                font-style: normal;
+                font-weight: normal;
+                font-size: 20px;
+                font-family: "nangouriman";
+                color:black;
+            }
+	.a p4{
+                font-style: normal;
+                font-weight: normal;
+                font-size: 20px;
+                font-family: "benmo";
+                color:black;
+            }
+	.b s1{color:#0066CC;}
+	.b a1{color:#0066CC; text-decoration:none;}
+	.b p1{
+                font-style: normal;
+                font-weight: normal;
+	            font-size: 20px;
+                font-family: "楷体";
+                color:#000000;
+            }
+	</style>
+
+<center><div class="i">
+<div class="mdui-divider"></div>
+<s1><a1 href="" onclick="window.open('https://live.bilibili.com/22818789')"><button class="mdui-btn mdui-ripple"><p1>直播间</p1></button></a1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a1 href="" onclick="window.open('https://space.bilibili.com/2119242414/')"><button class="mdui-btn mdui-ripple"><p1>个人主页</p1></button></a1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a1 href="" onclick="window.open('https://music.163.com/#/artist?id=46702729')"><button class="mdui-btn mdui-ripple"><p1>网易云</p1></button></a1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a1 href="" onclick="window.open('https://jq.qq.com/?_wv=1027&amp;k=8wxmjJz3')"><button class="mdui-btn mdui-ripple"><p1>粉丝群</p1></button></a1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a1 href="" onclick="window.open('https://space.bilibili.com/487718673')"><button class="mdui-btn mdui-ripple"><p1>录播</p1></button></a1></s1></div>
+<div class="mdui-divider"></div>
+
+<div class="i"><div class="a">
+<div class="mdui-panel mdui-panel-popout mdui-panel-gapless" mdui-panel>
+
+  <div class="mdui-panel-item">
+    <div class="mdui-panel-item-header">
+      <div class="mdui-panel-item-title"><p2>投稿</p2></div>
+      <div class="mdui-panel-item-summary">截止至：2021.03.01</div>
+      <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+    </div>
+    <div class="mdui-panel-item-body">
+	  <div class="mdui-divider"></div>
+      <p><a1 href="" onclick="window.open('https://www.bilibili.com/video/BV1mv411e7Hr')"><button class="mdui-btn mdui-ripple"><p2>母系社会</p2></button></a1></p>
+	  <div class="mdui-divider"></div>
+      <p><a1 href="" onclick="window.open('https://www.bilibili.com/video/BV1hU4y1x7kE')"><button class="mdui-btn mdui-ripple"><p2>自己按门铃自己听</p2></button></a1></p>
+	  <div class="mdui-divider"></div>
+      <p><a1 href="" onclick="window.open('https://www.bilibili.com/video/BV11v411e7zb')"><button class="mdui-btn mdui-ripple"><p2>繁华唱遍</p2></button></a1></p>
+	  <div class="mdui-divider"></div>
+      <p><a1 href="" onclick="window.open('https://www.bilibili.com/video/BV1rv411a7JW')"><button class="mdui-btn mdui-ripple"><p2>寄明月</p2></button></a1></p>
+	  <div class="mdui-divider"></div>
+      <p><a1 href="" onclick="window.open('https://www.bilibili.com/video/BV1Y54y1Y7uo')"><button class="mdui-btn mdui-ripple"><p2>女侠</p2></button></a1></p>
+	  <div class="mdui-divider"></div>
+      <p><a1 href="" onclick="window.open('https://www.bilibili.com/video/BV1MN411d75s')"><button class="mdui-btn mdui-ripple"><p2>浮白</p2></button></a1></p>
+	  <div class="mdui-divider"></div>
+      <p><a1 href="" onclick="window.open('https://www.bilibili.com/video/BV1WK4y1n73h')"><button class="mdui-btn mdui-ripple"><p2>DARLING</p2></button></a1></p>
+	  <div class="mdui-divider"></div>
+      <p><a1 href="" onclick="window.open('https://www.bilibili.com/video/BV1op4y1n7tm')"><button class="mdui-btn mdui-ripple"><p2>绝世舞姬</p2></button></a1></p>
+	  <div class="mdui-divider"></div>
+      <p><a1 href="" onclick="window.open('https://www.bilibili.com/video/BV11K4y1S73e')"><button class="mdui-btn mdui-ripple"><p2>囍（投稿1）</p2></button></a1></p>
+	  <div class="mdui-divider"></div>
+      <p><a1 href="" onclick="window.open('https://www.bilibili.com/video/BV11v411Y7P6')"><button class="mdui-btn mdui-ripple"><p2>囍（投稿2）</p2></button></a1></p>
+	  <div class="mdui-divider"></div>
+      </div>
+    </div>
+</div>
+
+<script src="js/mdui.min.js"></script>
+
+<div class="mdui-panel mdui-panel-popout mdui-panel-gapless" mdui-panel>
+
+  <div class="mdui-panel-item">
+    <div class="mdui-panel-item-header">
+      <div class="mdui-panel-item-title"><p2>韩语</p2></div>
+      <div class="mdui-panel-item-summary">截止至：2021.02.24</div>
+      <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+    </div>
+    <div class="mdui-panel-item-body">
+	  <div class="mdui-divider"></div>
+      <p>【泫雅】</p>
+      <p4>I'm Not Cool</p4>
+	  <div class="mdui-divider"></div>
+      <p>【MAMAMO】</p>
+      <p4>AYA HIP DINGGA GOGOBEBE(部分）MARIA</p4>
+	  <div class="mdui-divider"></div>
+      <p>【BLAK PINK】</p>
+      <p4>HOW YOU LIKE THAT</p4>
+	  <div class="mdui-divider"></div>
+      <p>【(G)I-DLE】</p>
+      <p4>HWAA DUMDi DUMDi uh-oh lion 【oh my god】 LATATA 【Put It Straight】 Senorita（部分）</p4>
+	  <div class="mdui-divider"></div>
+      </div>
+    </div>
+  </div>
+<script src="js/mdui.min.js"></script>
+
+<div class="mdui-panel mdui-panel-popout mdui-panel-gapless" mdui-panel>
+	
+  <div class="mdui-panel-item">
+    <div class="mdui-panel-item-header">
+      <div class="mdui-panel-item-title"><p2>日语</p2></div>
+      <div class="mdui-panel-item-summary">截止至：2021.02.24</div>
+      <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+    </div>
+    <div class="mdui-panel-item-body">
+	  <div class="mdui-divider"></div>
+      <p>Tung-Tung 【star dash】 用钢琴键殴打你</p>
+      <div class="mdui-divider"></div>
+      <p>ECHO 无心 极乐净土</p>
+	  <div class="mdui-divider"></div>
+      <p>我的世界已坠入爱河 妄想税 Departures</p>
+      <div class="mdui-divider"></div>
+      <p>罗密欧与仙度瑞拉（一部分） Butter Fly（圈9版） 天之弱（开头）</p>
+	  <div class="mdui-divider"></div>
+      <p>千本樱 别走 深昏睡</p>
+      <div class="mdui-divider"></div>
+      <p>染 12fun club</p>
+	  <div class="mdui-divider"></div>
+      <p>打上花火 孑然妒火 白金disco（一段）</p>
+      <div class="mdui-divider"></div>
+      <p>letter song（一段） 活动小丑 深爱着深爱着深爱着</p>
+	  <div class="mdui-divider"></div>
+	  <p>i beg you（一段） 【god knows】 【still doll】</p>
+      <div class="mdui-divider"></div>
+      <p>东京泰迪熊 爱的剧本（一段） 花葬</p>
+      <div class="mdui-divider"></div>
+	  <p>monster（一段） 离去之源（一段） 想要变得可爱（部分）</p>
+      <div class="mdui-divider"></div>
+      <p>再教育 红莲华（小部分） 再会</p>
+      <div class="mdui-divider"></div>
+	  <p>被生命所厌恶 幽灵法则 夏雪冬花（aimer）</p>
+      <div class="mdui-divider"></div>
+      <p>单相思（aimer） 阿吽的节奏（一段） Unravel(部分）</p>
+      <div class="mdui-divider"></div>
+	  <p>深海少女 【PiNK CAT】 LAMB</p>
+      <div class="mdui-divider"></div>
+      <p>桃源恋歌 o to na no掟（一段） 戏言speaker</p>
+      <div class="mdui-divider"></div>
+	  <p>将幸福的死给予 亲爱的（马热土） 渴望诞生</p>
+      <div class="mdui-divider"></div>
+      <p>月光润色女孩（一段） ROXY（一段） 伊吕波歌（一段）</p>
+      <div class="mdui-divider"></div>
+      </div>
+    </div>
+  </div>
+	
+<script src="js/mdui.min.js"></script>
+
+<div class="mdui-panel mdui-panel-popout mdui-panel-gapless" mdui-panel>
+	
+  <div class="mdui-panel-item">
+    <div class="mdui-panel-item-header">
+      <div class="mdui-panel-item-title"><p2>中文+古风</p2></div>
+      <div class="mdui-panel-item-summary">截止至：2021.03.04</div>
+      <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+    </div>
+    <div class="mdui-panel-item-body">
+	  <div class="mdui-divider"></div>
+      <p>破裂 燕无歇 魔童哪吒</p>
+      <div class="mdui-divider"></div>
+      <p>蓝（石白其） 夜蝶 盛夏好声音</p>
+	  <div class="mdui-divider"></div>
+      <p>姗姗 自己按门铃自己听 能走多远</p>
+      <div class="mdui-divider"></div>
+      <p>勇气 DUMDi DUMDi 小半</p>
+	  <div class="mdui-divider"></div>
+      <p>房间新版 我要我们在一起 青鸟</p>
+      <div class="mdui-divider"></div>
+      <p>昔言 归去来兮 一拜天地</p>
+	  <div class="mdui-divider"></div>
+      <p>囍 失落沙洲 入梦也</p>
+      <div class="mdui-divider"></div>
+      <p>左手指月 孽海记 全都是戏</p>
+	  <div class="mdui-divider"></div>
+	  <p>血腥爱情故事 红叶寺 七十二家酒楼</p>
+      <div class="mdui-divider"></div>
+      <p>人间不值得 雨爱 寄明月</p>
+      <div class="mdui-divider"></div>
+	  <p>红昭愿 百鬼阴阳抄 小跳蛙</p>
+      <div class="mdui-divider"></div>
+      <p>我要我们在一起 无情画 江山雪</p>
+      <div class="mdui-divider"></div>
+	  <p>普通的disco 锦鲤抄 狐言</p>
+      <div class="mdui-divider"></div>
+      <p>倒带 亲爱的姑娘你为何要离开 十三月凉</p>
+      <div class="mdui-divider"></div>
+	  <p>别看我只是一只羊 葫芦娃 勾指起誓</p>
+      <div class="mdui-divider"></div>
+      <p>说散就散 突然好想你（徐佳莹）腐草为萤</p>
+      <div class="mdui-divider"></div>
+	  <p>无期 九九八十一(一半）浮白</p>
+      <div class="mdui-divider"></div>
+      <p>痒 繁华唱遍 芊芊</p>
+      <div class="mdui-divider"></div>
+      <p>大鱼 牵丝戏 极乐净土（一部分）</p>
+      <div class="mdui-divider"></div>
+      <p>三月雨 好运来 字正腔圆</p>
+      <div class="mdui-divider"></div>
+      <p>不灭 山海 海底</p>
+      <div class="mdui-divider"></div>
+      <p>百利甜</p>
+      <div class="mdui-divider"></div>
+      </div>
+    </div>
+  </div>
+
+<script src="js/mdui.min.js"></script></div></div></center>
+<br><div class="mdui-divider"></div><center><div class="i"><strang><big><p>直播时间：20：00--半夜  中途休息一会儿然后播游戏 可能阴间时间突击</p></big></strang></div></center><div class="mdui-divider"></div>
+<br><div class="e"><center>6bug,yyds!</center>
+<style>
+	.box{
+		width:200px;
+		height: 200px;
+		background:url(1.png) no-repeat;
+		background-size:cover;
+		margin:50px auto;
+		border-radius: 50%;
+		animation: rotate 10s infinite linear;
+	}	
+	@keyframes rotate{
+		100%{transform: rotate(360deg)}
+	}
+</style>
+
+<div class="box"></div></div>
+<body>
+<center><div class="j"><a1>更新日志：</a1><a1 href="" onclick="window.open('https://github.com/SHDocter/bili_6bug')"><button class="mdui-btn mdui-ripple">【GitHub】</button></a1><br>
+<a1><details><summary>如有异常请看此处</summary><img src="w.png" alt="6bug"><br>copyright©2021 狐日泽 osttsStudio All rights reserved.</details></a1></div></center>
+</body>
+</html>
