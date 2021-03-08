@@ -3,7 +3,7 @@ bilibili六雨革月歌单<br>
 歌单网址：http://6bug.top<br>
 异常文档：http://6bug.top/error.html<br>
 直播间：https://live.bilibili.com/22818789<br>
-移动端适配@阿文
+移动端适配@阿文<br>
 配色@高橋はるき<br>
 字体库@高橋はるき<br>
 图片特效@甜甜小仙女<br>
