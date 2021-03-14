@@ -11,6 +11,7 @@ bilibili六雨革月歌单<br>
 heart特效@自由骑士笃志<br>
 移动端判断@自由骑士笃志<br>
 
+[老版本点这里](https://github.com/SHDocter/ostts_download/releases)
 注意：移动端与PC端是两个样式 移动端开发者为@阿文<br>
 
 为了减少工作量 部分无关紧要的小改动不会写入更新日志中<br>
