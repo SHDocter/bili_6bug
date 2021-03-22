@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="icon" type="image/x-icon" href="RS.jpg" />
+<link rel="shortcut icon" href="RS.jpg" type="image/x-icon">
+<title>bot手册</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
+<link rel="stylesheet" type="text/css" href="css/mdui.css">
+</head>
+<!--  变换线背景动画  <div id="page_begin_html">
+<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+<canvas id="c_n9" width="1920" height="1080" style="position: fixed; top: 0px; left: 0px; z-index: -1; opacity: 1;"></canvas>
+<script src="js/canvas-nest.min.js" defer=""></script>
+	</div> -->
+<script>
+	!function(e, t, a) {
+    function r() {
+        for (var e = 0; e < s.length; e++) s[e].alpha <= 0 ? (t.body.removeChild(s[e].el), s.splice(e, 1)) : (s[e].y--, s[e].scale += .004, s[e].alpha -= .013, s[e].el.style.cssText = "left:" + s[e].x + "px;top:" + s[e].y + "px;opacity:" + s[e].alpha + ";transform:scale(" + s[e].scale + "," + s[e].scale + ") rotate(45deg);background:" + s[e].color + ";z-index:99999");
+requestAnimationFrame(r)
+    }
+    function n() {
+        var t = "function" == typeof e.onclick && e.onclick;
+        e.onclick = function(e) {
+            t && t(),
+            o(e)
+        }
+    }
+    function o(e) {
+        var a = t.createElement("div");
+		//a.innerText = "❤";
+        a.className = "heart",
+        s.push({
+            el: a,
+            x: e.clientX - 5,
+            y: e.clientY - 5,
+            scale: 1,
+			alpha: 1,
+            color:  c()
+        }),
+
+        t.body.appendChild(a)
+    }
+    function i(e) {
+        var a = t.createElement("style");
+        a.type = "text/css";
+        try {
+            a.appendChild(t.createTextNode(e))
+        } catch(t) {
+            a.styleSheet.cssText = e
+        }
+        t.getElementsByTagName("head")[0].appendChild(a)
+    }
+    function c() {
+        return "rgb(" + ~~ (255 * Math.random()) + "," + ~~ (255 * Math.random()) + "," + ~~ (255 * Math.random()) + ")"
+    }
+        var s = [];
+        e.requestAnimationFrame = e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame ||
+    function(e) {
+        setTimeout(e, 1e3 / 60)
+    },
+        i(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"),
+        n(),
+        r()
+} (window, document);
+</script><!--heart-->
+<h2>翻阅</h2>
+<p>格式： 看看<strong>谁谁</strong>B站<br />
+谁谁 = 写要看的人的名字
+例：想看星街彗星B站 = 看看星街彗星B站<br />
+此时会返回最新的那一条B站动态内容  
+</p>
+<p>格式： 看看<strong>谁谁上条</strong>B站<br />
+上条 = 此处可修改，可以要求看置顶，上条，上上条，上上上条（最多3个上），也可直接写第x条，x范围是0~9<br />
+例：想看星街彗星的第4条B站 = 看看星街彗星第4条B站  
+</p>
+<h2>订阅</h2>
+<p>格式： 订阅<strong>谁谁</strong>B站 或者  订阅<strong>谁谁<strong>B站&gt;</strong>模式</strong><br />
+谁谁同上<br />
+模式可以为<code>包含转发</code>、<code>全部</code>和<code>仅原创</code>，默认不带模式时为仅原创<br />
+最大延迟随订阅账号增加而增加  
+</p>
+<h2>取消订阅</h2>
+<p>格式： 取消订阅<strong>谁谁</strong>B站  
+</p>
+<h2>通过B站链接分享</h2>
+<p>格式： 看看<strong>单条B站动态链接</strong><br />
+链接支持t.bilibili.com和b23.tv短链接  
+</p>
+<hr><hr>
+<h1>等式</h1>
+<h3>可以建立等式以使用短句替代长指令</h3>
+<p>例如如果要看爽哥Twitter的话，需要写 看看YwwuyiTwitter<br />
+那么可以这样建立等式以简化指令  
+</p>
+<p>@bot <strong>建立等式看看爽哥=看看YwwuyiTwitter</strong><br />
+之后说 看看爽哥，bot就会认为这句话等于 看看YwwuyiTwitter 并发送爽哥最新的那条Twitter
+注：
+* 等式左部可以使用图片<br />
+* 等式对所有指令有效，对复读和使用“我教你”学会的语句无效
+* 同一个指令可以有多条简写</p>
+<h3>删除等式</h3>
+<p>依旧是上面那个等式 看看爽哥=看看YwwuyiTwitter<br />
+@bot <strong>等式不成立看看爽哥=</strong><br />
+或者<br />
+@bot <strong>等式不成立=看看YwwuyiTwitter</strong></p>
+<p>两句话都可以，注意=的位置，在前表示匹配等式右边，在后表示匹配等式左边</p>
+<h3>查看目前生效的等式</h3>
+<p>@bot <strong>你觉得哪些一样</strong><br />
+就会给出一个列表</p>
+<h3>注意！</h3>
+<p>该功能对指令影响很大，因此<strong>只允许</strong>管理员和群主使用建立和删除功能，其他群员只能查看</p>
+<hr><hr>
+<h3>翻译介绍</h3>
+<p>这是机翻(废话)<br />
+</p>
+<h3>求翻译</h3>
+<ol>
+<li>翻译&gt; 后接需要翻译的外语句子，自动识别语言并翻译成中文  
+</li>
+<li>中译x&gt; x为目标语言，可以是日韩英法德俄，后接中文，会翻译为目标语言  
+</li>
+</ol>
+<h3>定向翻译</h3>
+<p>适合需要大量翻译的情况<br>
+使用：<br>
+1. 在群里直接说 <strong>开始定向翻译</strong><br>
+2. 说 开始定向翻译123456789，这样可以给别人上buff<br>
+3. 取消时，说<strong>停止定向翻译</strong>，后面可跟QQ号取消别人的buff<br>
+4. <strong>定向翻译列表</strong> 可以查看当前有哪些人有buff，只能群管理员使用</p>
+<hr><hr>
+<h3>教说话</h3>
+<h3>基础操作：</h3>
+<ol>
+<li>@bot 并说 我教你xxx &gt; yyy，就可以学会一个问答，一个关键词可以关联多个回应词，随机抽取</li>
+<li>@bot 并说 忘记/忘掉 xxx 就能删除关键词以及所有回应</li>
+<li>@bot 并说 回忆/想一想/想想 xxx 就能根据回应反查提问</li>
+<li>@bot 并说 你学过什么 会返回所有学过的句子和匹配模式，目前设置的仅有管理员和群主可用</li>
+</ol>
+<h3>进阶操作</h3>
+<ol>
+<li>教学的格式可变为 @bot 我教你xxx&gt;yyy&gt;精确/模糊/正则</li>
+<li>遗忘的格式同上，也可变为 @bot忘掉/忘记xxx &gt; 精确/模糊/正则，注意在模式为正则时为模糊匹配，</li>
+<li>忘记^123$只需要输入123&gt;正则就行了</li>
+</ol>
+<h3>计数</h3>
+<p>@bot 说<strong>教学成果</strong> 可以查看计数（仅管理员和群主可用）</p>
+<hr><hr>
+<h3>教复读</h3>
+<p>和教说话一样，可以复读图片</p>
+<ol>
+<li>@bot 并说 <strong>复读xxx</strong>，就可以学会复读  
+</li>
+<li>@bot 并说 <strong>不准复读xxx</strong>，就可以砸掉复读机  
+</li>
+<li>和教说话一样也可以@bot 复读xxx&gt;精确/模糊/正则  
+</li>
+</ol>
+<h3>计数</h3>
+<p>@bot 说<strong>教学成果</strong>可以查看计数(仅管理员和群主有效)</p>
+<hr><hr>
+<h1>能不能好好说话</h1>
+<p>拼音首字母缩写翻译工具，来自<a href="https://github.com/itorr/nbnhhsh">nbnhhsh</a>项目，感谢感谢</p>
+<h2>使用</h2>
+<p>在群聊中<br />
+解密：blabla  或者 解谜:blabla<br />
+就会得到翻译 </p>
+<h2>正则</h2>
+<p><code>^解[密迷][:：].+</code></p>
+<hr><hr>
+<h3>介绍</h3>
+<p>可以扔出任意面数（&lt;1000），任意个数(&lt;10)的骰子，可以指定最小值，自动统计总分  
+</p>
+<h3>使用方法</h3>
+<ol>
+<li>.dice6 扔一个D6</li>
+<li>.dice8x5 扔5个D8</li>
+<li>.dice16,10 扔1个最低为10的D16</li>
+<li>.dice20x3,10 扔3个最低为10的D20</li>
+</ol>
+<hr><hr>
+<h2>此功能因为与菜花无关 暂停使用</h2>
+<s><h2>微博</h2>
+<p>格式： 看看<strong>谁谁</strong>微博<br />
+谁谁 = 写要看的人的名字
+例：想看明日方舟微博 = 看看明日方舟微博<br />
+此时会返回最新的那一条微博内容  
+</p>
+<p>格式： 看看<strong>谁谁上条</strong>微博<br />
+上条 = 此处可修改，可以要求看置顶，上条，上上条，上上上条（最多3个上），也可直接写第x条，x范围是0~9<br />
+例：想看明日方舟的第5条微博 = 看看明日方舟第5条微博  
+</p>
+<h2>订阅</h2>
+<p>格式： 订阅<strong>谁谁</strong>微博 或者  订阅<strong>谁谁<strong>微博&gt;</strong>模式</strong><br />
+谁谁同上<br />
+模式可以为<code>包含转发</code>、<code>全部</code>和<code>仅原创</code>，默认不带模式时为仅原创<br />
+最大延迟随订阅账号增加而增加  
+</p>
+<h2>取消订阅</h2>
+<p>格式： 取消订阅<strong>谁谁</strong>微博  
+</p>
+<h2>查看微博链接</h2>
+<p>格式： 看看<strong>单条微博链接</strong><br />
+微博链接仅支持移动版微博链接，也就是app里分享出来的链接 m.weibo.cn<br />
+原因仅仅是因为作者不用电脑刷微博  
+</p>
+<h2>反微博小程序</h2>
+<p>会自动把群内的微博小程序内容给抓出来，造福PC用户  </p></s>
+<hr><hr>
+<h2>貌似有bug 建议不用</h2>
+<h2>我有一个朋友</h2>
+<p>指定一个群友，一键生成 我有一个朋友 图</p>
+<h3>用法</h3>
+<p>我有一个朋友@某某说过&quot;这里写说过什么&quot;</p>
+<p>正则<br />
+<code>我有一?个朋友\[CQ:at,qq=(\d+)\]\s?说过?[&quot;‘“](.*?)[&quot;’”]$</code></p>
+<hr><hr>
+<h3>Pixiv</h3>
+<p>看看p站后接p站图片id或者包含id的url<br><br>
+比如：看看p站123456 or 看看p站url
+</p>
+<p>暂不支持订阅</p>
+<h3>注</h3>
+<ol>
+<li>如果该id有多图会自动合并发送，最多同时发送9张</li>
+<li>无法发送4M以上大小的图，此时会发送图片链接</li>
+</ol>
